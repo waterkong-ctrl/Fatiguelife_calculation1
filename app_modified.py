@@ -1366,7 +1366,7 @@ def render_calculation_process(monopile, fluid, fatigue, loc, details, total_dam
         unsafe_allow_html=True,
     )
 
-    with st.expander("파랑하중 계산", expanded=True):
+    with st.expander("파랑하중 계산", expanded=False):
         st.markdown(
             """
             <div class="formula-card">
@@ -1591,6 +1591,7 @@ def render_value_table(rows: list[tuple[str, str]]) -> str:
     )
     return f'<table class="value-table"><tbody>{body}</tbody></table>'
 
+
 def render_condition_review(monopile: dict, fluid: dict, fatigue: dict, loc: dict) -> None:
     st.divider()
     section_title(
@@ -1616,7 +1617,6 @@ def render_condition_review(monopile: dict, fluid: dict, fatigue: dict, loc: dic
                 <div class="user-param-card">
                     <div class="review-card-title">
                         <strong>사용자 입력 파라미터</strong>
-                        <span class="review-tag user">직접 수정 가능</span>
                     </div>
                     {render_value_table(user_rows)}
                     <div class="inline-fixed-note">
