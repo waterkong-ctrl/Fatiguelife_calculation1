@@ -1,1 +1,0 @@
-# Fatiguelife_calculation1
