@@ -913,7 +913,7 @@ def point_in_polygon(lon: float, lat: float, polygon: list[tuple[float, float]])
     return inside
 
 
-def render_korea_sea_map(selected_key: str | None):
+def render_korea_sea_map(selected_key: str | None, height: int = 420):
     sea_points = {
         "west": {"lon": 125.1, "lat": 36.6, "label": "서해"},
         "south": {"lon": 127.5, "lat": 34.0, "label": "남해"},
@@ -976,7 +976,7 @@ def render_korea_sea_map(selected_key: str | None):
     )
 
     fig.update_layout(
-        height=420,
+        height=height,
         margin=dict(l=0, r=0, t=10, b=10),
         paper_bgcolor="white",
         plot_bgcolor="white",
@@ -1576,7 +1576,7 @@ def render_intro_and_map_user_friendly() -> None:
 
     with map_col:
         section_title("해역 선택 지도", "지도 글자 주변을 클릭하면 해역이 바뀝니다. 사이드바에서도 선택할 수 있습니다.")
-        clicked_key = render_korea_sea_map(st.session_state.selected_sea)
+        clicked_key = render_korea_sea_map(st.session_state.selected_sea, height=540)
         if clicked_key and clicked_key != st.session_state.selected_sea:
             st.session_state.selected_sea = clicked_key
             st.session_state.calculation_result = None
